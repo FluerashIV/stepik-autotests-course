@@ -11,7 +11,12 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME_IN_ALERT), "message is not present"
 
     def product_name_in_alert_equal_product_name(self):
-        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME_IN_ALERT) == self.is_element_present(*ProductPageLocators.PRODUCT_NAME)
+        product_name_in_alert = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME_IN_ALERT).text
+        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
+        assert product_name_in_alert == product_name, "product name is uncorrect"
 
     def total_basket_cost_in_alert_equal_product_cost(self):
-        assert self.is_element_present(*ProductPageLocators.PRODUCT_PRICE_IN_ALERT) == self.is_element_present(*ProductPageLocators.PRODUCT_PRICE)
+        product_price_in_alert = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE_IN_ALERT).text
+        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+        assert product_price_in_alert == product_price, "product price is uncorrect"
+
